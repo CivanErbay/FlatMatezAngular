@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "flatmatezAngular"
+    }
+  },
+  "defaultProject": "flatmatezAngular",
+  "cli": {
+    "analytics": false
+  }
 }
