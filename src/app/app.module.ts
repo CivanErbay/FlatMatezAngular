@@ -7,12 +7,14 @@ import { LandingComponent } from './landing/landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CleaningplanComponent } from './cleaningplan/cleaningplan.component';
+import { MembersComponent } from './members/members.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    CleaningplanComponent
+    CleaningplanComponent,
+    MembersComponent
   ],
   imports: [
     BrowserModule,

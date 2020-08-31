@@ -1,1 +1,9 @@
-<p>cleaningplan works!</p>
+<ul>
+    <li *ngFor="let member of memberlist$">  
+
+        <a [routerLink]="['/clean', member.name]">{{member.name}}</a>
+        
+    </li>
+</ul>
+
+<router-outlet></router-outlet>
