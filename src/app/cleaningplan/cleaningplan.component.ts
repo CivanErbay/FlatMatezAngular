@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CleaningplanComponent implements OnInit {
 
-  memberlist$ 
-  
+  //Definition of an Array of Objects
+  memberlist: {name: string, age: string}[]
+
   constructor() { }
 
   ngOnInit(): void {
-    this.memberlist$ = [
+    this.memberlist = [
       { name: "Anthea", age: "29" },
       { name: "Paco", age: "27" },
       { name: "Civan", age: "27" },

@@ -1,9 +1,1 @@
-<ul>
-    <li *ngFor="let member of memberlist$">  
-
-        <a [routerLink]="['/clean', member.name]">{{member.name}}</a>
-        
-    </li>
-</ul>
-
-<router-outlet></router-outlet>
+<h3 *ngFor="let member of memberlist"> {{member.name}} </h3>
