@@ -26,6 +26,7 @@ export class CleaningplanComponent implements OnInit {
     this.currCleanPersonIndex = this.week % this.memberlist.length
 }
 
+//Extra Idea = Add images instead of Names
   ngOnInit(): void {
     this.memberlist = [
       { name: 'Eyleen', age: '29' },
@@ -34,10 +35,7 @@ export class CleaningplanComponent implements OnInit {
       { name: 'Paul', age: '28' },
       { name: 'Civan', age: '26' },
     ];
-
- 
-
-
+    this.putzPlanCalc()
 
   }
 }
