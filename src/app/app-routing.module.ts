@@ -6,9 +6,17 @@ import { ErrorComponent } from './error/error.component';
 
 
 const routes: Routes = [
-  { path: '', component: LandingComponent  },
+  //Specific misspell will REDIRECT to specific component
+  { path: '', redirectTo: '/landing', pathMatch: 'full' },
+  { path: 'cleanss', redirectTo: '/clean', pathMatch: 'full' },
+
+  //Common routing
+  { path: 'landing', component: LandingComponent  },
   { path: 'clean', component: CleaningplanComponent},
-  { path: '**', component: ErrorComponent}
+
+  //Whenever something misspelled it will redirect to 404
+  { path: '**', component: ErrorComponent},
+
 ];
 
 @NgModule({
