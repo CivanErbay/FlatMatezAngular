@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-cleaningplan',
   templateUrl: './cleaningplan.component.html',
   styleUrls: ['./cleaningplan.component.scss']
 })
+
 export class CleaningplanComponent implements OnInit {
 
   //Definition of an Array of Objects
   memberlist: {name: string, age: string}[]
 
+  
   constructor() { }
 
   ngOnInit(): void {
