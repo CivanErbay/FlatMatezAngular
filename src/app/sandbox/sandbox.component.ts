@@ -42,9 +42,23 @@ export class SandboxComponent implements OnInit {
   }
 
   selectDish(dish: string) {
+
+    //Only set currendDish Variable
     console.log("Select dish Fired", dish)
     this.currentDish = dish;
-      this.dialog.open(DialogExampleComponent);
+
+    //Opens dialogExampleComponent-html and stores Obversable in dialogRef
+    //The Second Parameter is for passing in Data into the Dialog Component (through dialog-example.components.ts -- Dependency Injection 
+    // constructor(@Inject(MAT_DIALOG_DATA) public data:any) { })
+    // In the Template you can call {{data.name}}
+    let dialogRef = this.dialog.open(DialogExampleComponent, {data: {name: this.currentDish.title}});
+
+    //calls afterClosed Method of Dialog and subscribe ob that and shows the result 
+    //afterClosed() checks the mat-dialog-close value in the .html File of the Dialog Component
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`)
+    });
+
   }
 }
 
