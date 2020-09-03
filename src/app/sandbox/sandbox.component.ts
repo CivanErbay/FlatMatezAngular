@@ -14,4 +14,13 @@ export class SandboxComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  updateColor() {
+    console.log("Whoop")
+    this.themeColor ="salmon";
+  }
+
+  updateColor2() {
+    this.themeColor = "blue"
+  }
+
 }

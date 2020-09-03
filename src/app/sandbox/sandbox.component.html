@@ -1,10 +1,19 @@
 
-<!-- This Card is a code Example for 2 Way Binding
+<!-- This Card is a code Example for 2 Way Binding (property Binding)
  --><mat-card>
   <p [style.color]="themeColor">sandbox works!</p>
 
   <mat-form-field class="example-full-width">
     <mat-label>Favorite food</mat-label>
-    <input name="themeColor" matInput type="text" [(ngModel)]="themeColor"  />
+    <input name="themeColor" matInput [(ngModel)]="themeColor" type="text" />
   </mat-form-field>
+
+
+  <!-- This is event Binding -->
+  <button mat-button (click)="updateColor()">Click</button>
+
+<!--   Important: You can use all kind of DOM-Events and Trigger
+ -->  <button mat-button (mouseenter)="updateColor2()">Hover</button>
 </mat-card>
+
+
