@@ -1,1 +1,14 @@
-<p>ingredients works!</p>
+<mat-card style="margin-top: 1em;" >
+    <div style="display: flex; ">
+<p style="padding: 1em" *ngFor="let item of ingredients" (click)="dishHandler(item)">
+  {{ item.dish }}
+</p>
+</div>
+
+<p *ngIf="selectedDish, else elseBlock">
+  {{ selectedDish.dish }} contains {{ selectedDish.ingOne }} and
+  {{ selectedDish.ingTwo }} and {{ selectedDish.ingThree }}. It takes
+  {{ selectedDish.duration }} minutes of Preperation
+</p>
+<ng-template #elseBlock> Select a Dish </ng-template>
+</mat-card>
