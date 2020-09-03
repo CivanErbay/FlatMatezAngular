@@ -7,7 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { CleaningplanComponent } from './cleaningplan/cleaningplan.component';
 import { ErrorComponent } from './error/error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MaterialModule} from './material/material.module'
+import {MaterialModule} from './material/material.module';
+import { PlaygroundComponent } from './playground/playground.component'
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {MaterialModule} from './material/material.module'
     LandingComponent,
     CleaningplanComponent,
     ErrorComponent,
+    PlaygroundComponent,
   ],
   imports: [
     BrowserModule,
