@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SandboxComponent implements OnInit {
 
+  themeColor = "red"
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,1 +1,10 @@
-<p>sandbox works!</p>
+
+<!-- This Card is a code Example for 2 Way Binding
+ --><mat-card>
+  <p [style.color]="themeColor">sandbox works!</p>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Favorite food</mat-label>
+    <input name="themeColor" matInput type="text" [(ngModel)]="themeColor"  />
+  </mat-form-field>
+</mat-card>
