@@ -8,7 +8,7 @@ import { CleaningplanComponent } from './cleaningplan/cleaningplan.component';
 import { ErrorComponent } from './error/error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
-import { PlaygroundComponent } from './playground/playground.component'
+import { SandboxComponent } from './sandbox/sandbox.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { PlaygroundComponent } from './playground/playground.component'
     LandingComponent,
     CleaningplanComponent,
     ErrorComponent,
-    PlaygroundComponent,
+    SandboxComponent,
   ],
   imports: [
     BrowserModule,
