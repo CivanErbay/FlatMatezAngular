@@ -7,8 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SandboxComponent implements OnInit {
 
-  themeColor = "red"
 
+  favDishes = [
+    {
+      title: "Pizza", price: 9
+    }, {
+      title: "Falafel", price: 3
+    }, {
+      title: "PadThai", price: 7
+    }, {
+      title: "Döner", price: 4
+    }, {
+      title: "Pasta", price: 8
+    },
+    
+  ]
+
+
+  themeColor = "red"
   constructor() { }
 
   ngOnInit(): void {
