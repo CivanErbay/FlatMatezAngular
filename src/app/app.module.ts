@@ -9,6 +9,7 @@ import { ErrorComponent } from './error/error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
 import { SandboxComponent } from './sandbox/sandbox.component';
+import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,11 @@ import { SandboxComponent } from './sandbox/sandbox.component';
     CleaningplanComponent,
     ErrorComponent,
     SandboxComponent,
+    DialogExampleComponent,
   ],
+  entryComponents: [
+   DialogExampleComponent]
+   ,
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,4 +1,3 @@
-
 <!-- This Card is a code Example for 2 Way Binding (property Binding)
  --><mat-card>
   <p [style.color]="themeColor">sandbox works!</p>
@@ -8,12 +7,19 @@
     <input name="themeColor" matInput [(ngModel)]="themeColor" type="text" />
   </mat-form-field>
 
-
   <!-- This is event Binding -->
   <button mat-button (click)="updateColor()">Click</button>
 
-<!--Important: You can use all kind of DOM-Events and Trigger--> 
- <button mat-button (mouseenter)="updateColor2()">Hover</button>
+  <!--Important: You can use all kind of DOM-Events and Trigger-->
+  <button mat-button (mouseenter)="updateColor2()">Hover</button>
 </mat-card>
 
 
+<!-- *ngFor example Best Practice-->
+<mat-card style="margin-top: 1em">
+  <mat-list role="list" style="display: flex;">
+    <mat-list-item role="listitem" *ngFor="let dish of favDishes" (click)="selectDish(dish)">
+      <h3>{{ dish.title }}</h3>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

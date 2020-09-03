@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
 
 @Component({
   selector: 'app-sandbox',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SandboxComponent implements OnInit {
 
+  currentDish = null;
 
   favDishes = [
     {
@@ -23,10 +26,9 @@ export class SandboxComponent implements OnInit {
     
   ]
 
-
   themeColor = "red"
-  constructor() { }
-
+  constructor(public dialog: MatDialog) { }
+ 
   ngOnInit(): void {
   }
 
@@ -39,4 +41,12 @@ export class SandboxComponent implements OnInit {
     this.themeColor = "blue"
   }
 
+  selectDish(dish: string) {
+    console.log("Select dish Fired", dish)
+    this.currentDish = dish;
+      this.dialog.open(DialogExampleComponent);
+  }
 }
+
+
+
