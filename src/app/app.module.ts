@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
 import { SandboxComponent } from './sandbox/sandbox.component';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
+import { IngredientsComponent } from './ingredients/ingredients.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DialogExampleComponent } from './dialog-example/dialog-example.componen
     ErrorComponent,
     SandboxComponent,
     DialogExampleComponent,
+    IngredientsComponent,
   ],
   entryComponents: [
    DialogExampleComponent]
