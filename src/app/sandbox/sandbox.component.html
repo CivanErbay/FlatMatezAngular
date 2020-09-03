@@ -18,8 +18,19 @@
 <!-- *ngFor example Best Practice-->
 <mat-card style="margin-top: 1em">
   <mat-list role="list" style="display: flex;">
-    <mat-list-item role="listitem" *ngFor="let dish of favDishes" (click)="selectDish(dish)">
+    <mat-list-item role="listitem" *ngFor="let dish of favDishes" (click)="selectAndVoteDish(dish)">
       <h3>{{ dish.title }}</h3>
     </mat-list-item>
   </mat-list>
+</mat-card>
+
+
+<!-- *ngIf example Best Practice -->
+ <mat-card>
+    <mat-card-header>
+        <mat-card-title>Debug</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <span *ngIf="currentDish">{{currentDish | json }}</span>  
+    </mat-card-content>
 </mat-card>

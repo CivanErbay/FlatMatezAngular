@@ -41,7 +41,8 @@ export class SandboxComponent implements OnInit {
     this.themeColor = "blue"
   }
 
-  selectDish(dish: string) {
+  //TODO: Up & DownVote need to be stored in State
+  selectAndVoteDish(dish: string) {
 
     //Only set currendDish Variable
     console.log("Select dish Fired", dish)
