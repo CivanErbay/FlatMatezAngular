@@ -1,4 +1,33 @@
-
-<a routerLink="/clean"><img src="assets/cleaning.svg" alt=""></a>
-
-
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 60vh;
+  "
+>
+  <mat-card class="center"
+    ><a routerLink="/clean"
+      ><img style="height: 20vh" src="assets/cleaning.svg" alt="" />
+    </a>
+    <div style="display: flex; flex-direction: column; padding: 1.5em;" >
+      <p>Putzplan</p>
+      <p style="font-size: 0.5em; font-style: italic">
+        "Housework is like cleaning fish. No matter how often you do it, it still
+        stinks."
+      </p>
+    </div>
+  </mat-card>
+  <mat-card class="center"
+    ><a routerLink="/sandbox"
+      ><img style="height: 20vh" src="assets/sand.svg" alt=""
+    /></a>
+    <div style="display: flex; flex-direction: column; padding: 1.5em;" >
+        <p>Spielplatz</p>
+        <p style="font-size: 0.5em; font-style: italic">
+          "I licked it, so it's mine."
+        </p>
+      </div>
+  </mat-card>
+</div>
