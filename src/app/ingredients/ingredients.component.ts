@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IngredientsComponent implements OnInit {
   selectedDish: {
+    id: number;
     dish: string;
     ingOne: string;
     ingTwo: string;
@@ -17,6 +18,7 @@ export class IngredientsComponent implements OnInit {
 
   ingredients = [
     {
+      id: 0,
       dish: 'Pizza',
       ingOne: 'Dough',
       ingTwo: 'Cheese',
@@ -24,7 +26,8 @@ export class IngredientsComponent implements OnInit {
       duration: 15,
       favourite: true,
     },
-    {
+    { 
+      id: 1,
       dish: 'Falafel',
       ingOne: 'Chickpeas',
       ingTwo: 'Bread',
@@ -32,7 +35,8 @@ export class IngredientsComponent implements OnInit {
       duration: 4,
       favourite: true,
     },
-    {
+    { 
+      id: 2,
       dish: 'PadThai',
       ingOne: 'Noodels',
       ingTwo: 'Peanuts',
@@ -40,7 +44,8 @@ export class IngredientsComponent implements OnInit {
       duration: 10,
       favourite: true,
     },
-    {
+    { 
+      id: 3,
       dish: 'Döner',
       ingOne: 'Bread',
       ingTwo: 'Meet',
@@ -48,7 +53,8 @@ export class IngredientsComponent implements OnInit {
       duration: 3,
       favourite: false,
     },
-    {
+    { 
+      id: 4,
       dish: 'Pasta',
       ingOne: 'Noodels',
       ingTwo: 'Oil',
@@ -64,5 +70,10 @@ export class IngredientsComponent implements OnInit {
   dishHandler(dish: any) {
     this.selectedDish = dish;
     console.log(this.selectedDish)
+  }
+
+  deleteDish(dishId: any) {
+ /* this.ingredients.splice(dishId, 1) */
+ this.ingredients = this.ingredients.filter(it => it.id != dishId) 
   }
 }
