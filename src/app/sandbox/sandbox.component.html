@@ -7,7 +7,7 @@
         <mat-card>
           <!-- This Card is a code Example for 2 Way Binding (property Binding) -->
           <mat-form-field class="example-full-width">
-            <mat-label>Favorite food</mat-label>
+            <mat-label>Gimme sum colorz</mat-label>
             <input
               name="themeColor"
               matInput
@@ -30,20 +30,21 @@
               *ngFor="let dish of favDishes"
               (click)="selectAndVoteDish(dish)"
             >
-            <div style="display:flex; justify-content: space-between">
-              <h3 style="font-weight: bold">{{ dish.dish }}</h3>
-              <!-- In every Event you can Put More than one function(!!) and ALSO with every EventHandler there is an 
+              <div style="display: flex; justify-content: space-between">
+                <h3 [style.color]="themeColor" style="font-weight: bold">{{ dish.dish }}</h3>
+                <!-- In every Event you can Put More than one function(!!) and ALSO with every EventHandler there is an 
        Event-Property which we have to with the $ sign -->
-              <button
-                mat-icon-button
-                color="warn"
-                (click)="
-                  deleteDish(currentDish.id); $event.stopImmediatePropagation()
-                "
-              >
-                <mat-icon>delete_sweep</mat-icon>
-              </button>
-            </div>
+                <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="
+                    deleteDish(currentDish.id);
+                    $event.stopImmediatePropagation()
+                  "
+                >
+                  <mat-icon>delete_sweep</mat-icon>
+                </button>
+              </div>
             </mat-list-item>
           </div>
         </mat-card>
@@ -53,16 +54,25 @@
     <mat-grid-tile>
       <div>
         <h1>Output Section</h1>
-        <mat-card style="max-width: 40vw">
-          <p [style.color]="themeColor">sandbox works!</p>
 
-          <!-- *ngIf example Best Practice -->
-          <!-- also good Practice to embed a LoadingSpinner-->
+        <!--         Angular is creating a form-controller under the hood, as soon as you use angular-forms
+ -->
+        <form #form="ngForm">
+          <mat-card style="max-width: 40vw">
 
-          <div style="margin-top: 3em">
-            <app-ingredients [selectedDish]="currentDish"></app-ingredients>
-          </div>
-        </mat-card>
+
+
+            <div style="margin-top: 3em">
+              <app-ingredients [selectedDish]="currentDish"></app-ingredients>
+            </div>
+
+            <input *ngIf="currentDish" matInput placeholder="title"
+            type="text" name="title"
+            [(ngModel)]="currentDish.dish">
+
+            <button type="button" mat-button (click)=cancel()>Cancel</button>
+          </mat-card>
+        </form>
       </div>
     </mat-grid-tile>
   </mat-grid-list>

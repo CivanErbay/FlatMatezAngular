@@ -1,7 +1,7 @@
 <div>
 
 
-  <mat-list-item *ngIf="selectedDish; else elseBlock">
+  <mat-list-item *ngIf="selectedDish.id != null; else elseBlock">
     <div
       style="display: flex; justify-content: space-around; align-items: center"
     >

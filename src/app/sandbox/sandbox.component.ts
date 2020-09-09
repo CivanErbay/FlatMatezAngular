@@ -8,15 +8,15 @@ import { IngredientsComponent } from '../ingredients/ingredients.component';
   templateUrl: './sandbox.component.html',
   styleUrls: ['./sandbox.component.scss'],
 })
-export class SandboxComponent implements AfterViewInit {
+export class SandboxComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
-  //Grabbing IngredientsArray from IngredientsComponent (Childcomponent in this case)
-  @ViewChild(IngredientsComponent) child;
-
-  ngAfterViewInit(): void {
-    const listOfIngs = this.child.ingredients;
+  
+  ngOnInit(): void {
+    this.resetSelectedDish();
   }
+
+
 
   favDishes = [
     {
@@ -66,12 +66,15 @@ export class SandboxComponent implements AfterViewInit {
     },
   ];
 
-  //Variables
+
+
+  //VARIABLES
   themeColor = 'red';
   currentDish: any;
 
-  ngOnInit(): void {}
 
+
+  //METHODS
   updateColor() {
     this.themeColor = 'salmon';
   }
@@ -104,5 +107,23 @@ export class SandboxComponent implements AfterViewInit {
   deleteDish(dishId: any) {
     // this.ingredients.splice(dishId, 1)
     this.favDishes = this.favDishes.filter((it) => it.id != dishId);
+  }
+
+  resetSelectedDish() {
+    const emptyDish = {
+      id: null,
+      dish: '',
+      ingOne: '',
+      ingTwo: '',
+      ingThree: '',
+      duration: null,
+      favourite: false,
+    }
+
+    this.currentDish = emptyDish;
+  }
+
+  cancel() {
+    this.resetSelectedDish();
   }
 }
