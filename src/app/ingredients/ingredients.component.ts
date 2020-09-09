@@ -14,7 +14,7 @@ export class IngredientsComponent implements OnInit {
 
   constructor() {}
   ngOnInit(): void {
-    this.selectedDish = null;
+    this.selectedDish ;
   }
 
 

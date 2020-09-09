@@ -31,7 +31,9 @@
               (click)="selectAndVoteDish(dish)"
             >
               <div style="display: flex; justify-content: space-between">
-                <h3 [style.color]="themeColor" style="font-weight: bold">{{ dish.dish }}</h3>
+                <h3 [style.color]="themeColor" style="font-weight: bold">
+                  {{ dish.dish }}
+                </h3>
                 <!-- In every Event you can Put More than one function(!!) and ALSO with every EventHandler there is an 
        Event-Property which we have to with the $ sign -->
                 <button
@@ -58,21 +60,41 @@
         <!--         Angular is creating a form-controller under the hood, as soon as you use angular-forms
  -->
         <form #form="ngForm">
-          <mat-card style="max-width: 40vw">
-
-
-
+          <mat-card style="max-width: 40vw"  class="center">
             <div style="margin-top: 3em">
               <app-ingredients [selectedDish]="currentDish"></app-ingredients>
             </div>
 
-            <input *ngIf="currentDish" matInput placeholder="title"
-            type="text" name="title"
-            [(ngModel)]="currentDish.dish">
-
-            <button type="button" mat-button (click)=cancel()>Cancel</button>
+<!--             REQUIRED property gives back true/false on the value of "{{form.valid}}" which we can work with 
+ -->            <mat-form-field>
+            <input
+              *ngIf="currentDish"
+              matInput
+              placeholder="title"
+              type="text"
+              name="title"
+              required
+              [(ngModel)]="currentDish.dish"
+            />
+          </mat-form-field>       
+          <mat-form-field>
+            <input
+              *ngIf="currentDish"
+              matInput
+              placeholder="Ing One"
+              type="text"
+              name="description"
+              [(ngModel)]="currentDish.ingOne"
+            />
+      
+          </mat-form-field>
+          <button type="button" mat-button (click)="cancel()">Cancel</button>
           </mat-card>
         </form>
+        <mat-card style="margin-top: 2em">
+          <pre>{{ form.value | json }}</pre>
+          <pre>{{ form.valid | json }}</pre>
+        </mat-card>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
