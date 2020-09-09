@@ -57,38 +57,71 @@
       <div>
         <h1>Output Section</h1>
 
-        <!--         Angular is creating a form-controller under the hood, as soon as you use angular-forms
- -->
-        <form #form="ngForm">
-          <mat-card style="max-width: 40vw"  class="center">
+        <!-- Angular is creating a form-controller under the hood, as soon as you use angular-forms. e.g. (submit)-Function or form.valid/form.invalid
+          to handle "disabled" -->
+        <form
+          #form="ngForm"
+          (submit)="
+            saveDish(
+              currentDish.dish,
+              currentDish.ingOne,
+              currentDish.ingTwo,
+              currentDish.ingThree
+            )
+          "
+        >
+          <mat-card style="max-width: 40vw" class="center">
             <div style="margin-top: 3em">
               <app-ingredients [selectedDish]="currentDish"></app-ingredients>
             </div>
 
-<!--             REQUIRED property gives back true/false on the value of "{{form.valid}}" which we can work with 
- -->            <mat-form-field>
-            <input
-              *ngIf="currentDish"
-              matInput
-              placeholder="title"
-              type="text"
-              name="title"
-              required
-              [(ngModel)]="currentDish.dish"
-            />
-          </mat-form-field>       
-          <mat-form-field>
-            <input
-              *ngIf="currentDish"
-              matInput
-              placeholder="Ing One"
-              type="text"
-              name="description"
-              [(ngModel)]="currentDish.ingOne"
-            />
-      
-          </mat-form-field>
-          <button type="button" mat-button (click)="cancel()">Cancel</button>
+            <!--             REQUIRED property gives back true/false on the value of "{{form.valid}}" which we can work with 
+ -->
+            <mat-form-field>
+              <input
+                *ngIf="currentDish"
+                matInput
+                placeholder="title"
+                type="text"
+                name="title"
+                required
+                [(ngModel)]="currentDish.dish"
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                *ngIf="currentDish"
+                matInput
+                placeholder="Erste Zutat"
+                type="text"
+                name="description"
+                required
+                [(ngModel)]="currentDish.ingOne"
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                *ngIf="currentDish"
+                matInput
+                placeholder="Erste Zutat"
+                type="text"
+                name="description"
+                required
+                [(ngModel)]="currentDish.ingTwo"
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                *ngIf="currentDish"
+                matInput
+                placeholder="Erste Zutat"
+                type="text"
+                name="description"
+                [(ngModel)]="currentDish.ingThree"
+              />
+            </mat-form-field>
+            <button type="button" mat-button (click)="cancel()">Cancel</button>
+            <button [disabled]="form.invalid" type="submit" mat-button color="primary">Submit</button>
           </mat-card>
         </form>
         <mat-card style="margin-top: 2em">

@@ -66,8 +66,6 @@ export class SandboxComponent implements OnInit {
     },
   ];
 
-
-
   //VARIABLES
   themeColor = 'red';
   currentDish: any;
@@ -125,5 +123,20 @@ export class SandboxComponent implements OnInit {
 
   cancel() {
     this.resetSelectedDish();
+  }
+
+  saveDish(title, ingOne, ingTwo, ingThree) {
+    const addDish = {
+      id: this.favDishes.length,
+      dish: title,
+      ingOne: ingOne,
+      ingTwo: ingTwo,
+      ingThree: ingThree,
+      duration: 10,
+      favourite: false,
+    }
+
+    this.favDishes.push(addDish)
+
   }
 }
