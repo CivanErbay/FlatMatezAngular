@@ -1,44 +1,69 @@
+<div style="height: 100vh">
+  <mat-grid-list cols="2">
+    <mat-grid-tile>
+      <div>
+        <h1>Control Section</h1>
 
+        <mat-card>
+          <!-- This Card is a code Example for 2 Way Binding (property Binding) -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Favorite food</mat-label>
+            <input
+              name="themeColor"
+              matInput
+              [(ngModel)]="themeColor"
+              type="text"
+            />
+          </mat-form-field>
 
-<!-- This Card is a code Example for 2 Way Binding (property Binding)
- --><mat-card>
-  <p [style.color]="themeColor">sandbox works!</p>
+          <!-- This is event Binding -->
+          <button mat-button (click)="updateColor()">Click</button>
 
-  <mat-form-field class="example-full-width">
-    <mat-label>Favorite food</mat-label>
-    <input name="themeColor" matInput [(ngModel)]="themeColor" type="text" />
-  </mat-form-field>
+          <!--Important: You can use all kind of DOM-Events and Trigger-->
+          <button mat-button (mouseenter)="updateColor2()">Hover</button>
 
-  <!-- This is event Binding -->
-  <button mat-button (click)="updateColor()">Click</button>
+          <!-- *ngFor example Best Practice-->
+          <div>
+            <mat-list-item
+              style="cursor: pointer"
+              role="listitem"
+              *ngFor="let dish of favDishes"
+              (click)="selectAndVoteDish(dish)"
+            >
+            <div style="display:flex; justify-content: space-between">
+              <h3 style="font-weight: bold">{{ dish.dish }}</h3>
+              <!-- In every Event you can Put More than one function(!!) and ALSO with every EventHandler there is an 
+       Event-Property which we have to with the $ sign -->
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="
+                  deleteDish(currentDish.id); $event.stopImmediatePropagation()
+                "
+              >
+                <mat-icon>delete_sweep</mat-icon>
+              </button>
+            </div>
+            </mat-list-item>
+          </div>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
 
-  <!--Important: You can use all kind of DOM-Events and Trigger-->
-  <button mat-button (mouseenter)="updateColor2()">Hover</button>
-</mat-card>
+    <mat-grid-tile>
+      <div>
+        <h1>Output Section</h1>
+        <mat-card style="max-width: 40vw">
+          <p [style.color]="themeColor">sandbox works!</p>
 
+          <!-- *ngIf example Best Practice -->
+          <!-- also good Practice to embed a LoadingSpinner-->
 
-<!-- *ngFor example Best Practice-->
-<mat-card style="margin-top: 1em; cursor: pointer;">
-  <mat-list role="list" style="display: flex;">
-    <mat-list-item role="listitem" *ngFor="let dish of favDishes" (click)="selectAndVoteDish(dish)">
-      <h3>{{ dish.title }}</h3>
-    </mat-list-item>
-  </mat-list>
-</mat-card>
-
-
-<!-- *ngIf example Best Practice -->
-<!-- also good Practice to embed a LoadingSpinner--> 
-<mat-card style="margin-top: 1em">
-    <mat-card-header>
-        <mat-card-title>Debug</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <span *ngIf="currentDish; else elseBlocc">{{currentDish | json }}</span>  
-        <ng-template #elseBlocc>Select a dish</ng-template>
-    </mat-card-content>
-</mat-card>
-
-<app-ingredients></app-ingredients>
-
-
+          <div style="margin-top: 3em">
+            <app-ingredients [selectedDish]="currentDish"></app-ingredients>
+          </div>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

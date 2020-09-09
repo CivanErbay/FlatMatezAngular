@@ -10,8 +10,6 @@ import {MatIconModule} from '@angular/material/icon';
 
 
 
-
-
 const MaterialComponents = [
   MatInputModule,
   MatSlideToggleModule,
@@ -20,7 +18,7 @@ const MaterialComponents = [
   MatListModule,
   MatDialogModule,
   MatGridListModule,
-  MatIconModule
+  MatIconModule,
 ]
 
 @NgModule({

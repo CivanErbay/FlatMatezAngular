@@ -1,51 +1,25 @@
-<mat-card style="margin-top: 1em">
-  <mat-card-header>
-    <div style="display: flex">
-      <h1
-        style="padding: 0 1em; font-weight: bold; cursor: pointer"
-        *ngFor="let item of ingredients"
-        (click)="dishHandler(item)"
-      >
-        {{ item.dish }}
-      </h1>
-    </div>
-  </mat-card-header>
-</mat-card>
-<mat-card style="margin-top: 1em">
-  <mat-card-content>
-    <mat-list-item *ngIf="selectedDish; else elseBlock">
-      <div
-        style="
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-        "
-      >
-        <div>
-          <h3 style="font-weight: 600" matLine>
-            {{ selectedDish.dish }} contains {{ selectedDish.ingOne }} and
-            {{ selectedDish.ingTwo }} and {{ selectedDish.ingThree }}.
-          </h3>
+<div>
 
-          <p matLine>
-            It takes
-            {{ selectedDish.duration }} minutes of Preperation
-          </p>
-        </div>
 
-        <!-- In every Event you can Put More than one function(!!) and ALSO with every EventHandler there is an 
-       Event-Property which we have to with the $ sign -->
-        <button
-          mat-icon-button
-          color="warn"
-          (click)="
-            deleteDish(selectedDish.id); $event.stopImmediatePropagation()
-          "
-        >
-          <mat-icon>delete_sweep</mat-icon>
-        </button>
+  <mat-list-item *ngIf="selectedDish; else elseBlock">
+    <div
+      style="display: flex; justify-content: space-around; align-items: center"
+    >
+      <div>
+        <h3 style="font-weight: 600" matLine>
+          {{ selectedDish.dish }} contains {{ selectedDish.ingOne }} and
+          {{ selectedDish.ingTwo }} and {{ selectedDish.ingThree }}.
+        </h3>
+
+        <p matLine>
+          It takes
+          {{ selectedDish.duration }} minutes of Preperation
+        </p>
       </div>
-    </mat-list-item>
-  </mat-card-content>
+
+   
+    </div>
+  </mat-list-item>
+
   <ng-template #elseBlock> Select a Dish </ng-template>
-</mat-card>
+</div>
