@@ -1,6 +1,7 @@
 <div style="height: 100vh">
-  <mat-grid-list cols="2">
-    <mat-grid-tile>
+
+  <mat-grid-list cols="2"  rowHeight="100vh">
+    <mat-grid-tile >
       <div>
         <h1>Control Section</h1>
 
@@ -59,6 +60,9 @@
 
         <!-- Angular is creating a form-controller under the hood, as soon as you use angular-forms. e.g. (submit)-Function or form.valid/form.invalid
           to handle "disabled" -->
+
+   
+
         <form
           #form="ngForm"
           (submit)="
@@ -116,7 +120,7 @@
                 matInput
                 placeholder="Erste Zutat"
                 type="text"
-                name="description"
+                name="id"
                 [(ngModel)]="currentDish.ingThree"
               />
             </mat-form-field>
@@ -128,6 +132,11 @@
           <pre>{{ form.value | json }}</pre>
           <pre>{{ form.valid | json }}</pre>
         </mat-card>
+
+        <!-- <button (click)="showFavs()"></button> -->
+
+        <app-fav-dishes [allDishes]="favDishes"></app-fav-dishes>
+       
       </div>
     </mat-grid-tile>
   </mat-grid-list>

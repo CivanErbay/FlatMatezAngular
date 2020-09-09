@@ -139,4 +139,8 @@ export class SandboxComponent implements OnInit {
     this.favDishes.push(addDish)
 
   }
+
+  showFavs() {
+    
+  }
 }

@@ -11,6 +11,7 @@ import { SandboxComponent } from './sandbox/sandbox.component';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { FormsModule } from '@angular/forms';
+import { FavDishesComponent } from './fav-dishes/fav-dishes.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     SandboxComponent,
     DialogExampleComponent,
     IngredientsComponent,
+    FavDishesComponent,
   
   ],
   entryComponents: [
