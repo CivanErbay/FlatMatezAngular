@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CleanService } from '../shared/services/clean.service';
+
 
 @Component({
   selector: 'app-cleaningplan',
@@ -19,7 +21,7 @@ export class CleaningplanComponent implements OnInit {
   );
   weekday: any = this.now.getDay()
 
-  constructor() {}
+  constructor(private cleanService : CleanService) {}
     
   //returns e.g. 36 (this.week) % 5 (this.memberlist.length) = 1 (leftover of modulo for indexposition)
    putzPlanCalc = () => {
@@ -28,14 +30,12 @@ export class CleaningplanComponent implements OnInit {
 
 //Extra Idea = Add images instead of Names
   ngOnInit(): void {
-    this.memberlist = [
-      { name: 'Eyleen', age: '29' },
-      { name: 'Paco', age: '27' },
-      { name: 'Anthea', age: '27' },
-      { name: 'Paul', age: '28' },
-      { name: 'Civan', age: '26' },
-    ];
-    this.putzPlanCalc()
 
+    this.memberlist = this.cleanService.all();
+
+ 
+    this.putzPlanCalc()
+    
+    
   }
 }

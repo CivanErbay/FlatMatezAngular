@@ -13,6 +13,8 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { FormsModule } from '@angular/forms';
 import { FavDishesComponent } from './fav-dishes/fav-dishes.component';
 import { DishesService } from './shared/services/dishes.service';
+import { CleanService } from './shared/services/clean.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,8 @@ import { DishesService } from './shared/services/dishes.service';
     FormsModule
   ],
   providers: [
-    DishesService
+    DishesService,
+    CleanService
   ],
   bootstrap: [AppComponent]
 })
