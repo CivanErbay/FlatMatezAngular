@@ -7,7 +7,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatSliderModule} from '@angular/material/slider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 const MaterialComponents = [
@@ -19,6 +20,9 @@ const MaterialComponents = [
   MatDialogModule,
   MatGridListModule,
   MatIconModule,
+  MatSliderModule,
+  MatProgressBarModule
+
 ]
 
 @NgModule({

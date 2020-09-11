@@ -1,6 +1,6 @@
-<div style="height: 100vh">
 
-  <mat-grid-list cols="2"  rowHeight="100vh">
+
+  <mat-grid-list cols="2" >
     <mat-grid-tile >
       <div>
         <h1>Control Section</h1>
@@ -61,7 +61,7 @@
         <!-- Angular is creating a form-controller under the hood, as soon as you use angular-forms. e.g. (submit)-Function or form.valid/form.invalid
           to handle "disabled" -->
 
-   
+          <app-fav-dishes [allDishes]="favDishes"></app-fav-dishes>
 
         <form
           #form="ngForm"
@@ -128,16 +128,13 @@
             <button [disabled]="form.invalid" type="submit" mat-button color="primary">Submit</button>
           </mat-card>
         </form>
-        <mat-card style="margin-top: 2em">
-          <pre>{{ form.value | json }}</pre>
-          <pre>{{ form.valid | json }}</pre>
-        </mat-card>
+   
 
         <!-- <button (click)="showFavs()"></button> -->
 
-        <app-fav-dishes [allDishes]="favDishes"></app-fav-dishes>
+     
        
       </div>
     </mat-grid-tile>
   </mat-grid-list>
-</div>
+

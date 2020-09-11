@@ -1,11 +1,30 @@
-
-<div *ngIf="filteredDishes" style="margin-top: 2em">
-<mat-card>
+<div *ngIf="filteredDishes" style="margin: 2em 0">
+  <mat-card>
     <h1>Favourite Meals</h1>
-    <mat-list >
-        <mat-list-item *ngFor="let item of filteredDishes">
-            <h2>{{item.dish}}</h2>
-        </mat-list-item>
+
+    <mat-list>
+      <div
+        style="display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 1em"
+        *ngFor="let item of filteredDishes"
+      >
+        <h2>{{ item.dish }}</h2>
+
+        <!--           <mat-slider class="full-width"
+          min="0"
+          max="30"
+          name="duration"
+          thumbLabel
+          [(ngModel)]="item.duration"
+          ></mat-slider> -->
+
+        <mat-progress-bar
+         mode="determinate" 
+         [value]="item.duration*3"
+         min="0"
+         max="30"
+         ></mat-progress-bar>
+         <span>{{item.duration}} Min</span>
+      </div>
     </mat-list>
-</mat-card>
+  </mat-card>
 </div>

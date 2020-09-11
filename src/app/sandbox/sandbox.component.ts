@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
-import { IngredientsComponent } from '../ingredients/ingredients.component';
 
 @Component({
   selector: 'app-sandbox',
