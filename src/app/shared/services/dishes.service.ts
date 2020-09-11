@@ -5,7 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class DishesService {
 
-  dishes = [
+
+  //Stored Data 
+
+  private dishes = [
     {
       id: 0,
       dish: 'Pizza',
@@ -55,4 +58,29 @@ export class DishesService {
 
 
   constructor() { }
+
+  // Functionality
+
+  //get All
+  all() {
+      return this.dishes;
+  }
+
+  //get One specific
+  find(dishId) {
+
+  }
+
+  create(entireDish) {
+    this.dishes.push(entireDish) 
+  }
+
+  update(entireDish) {
+    console.log("Update Dish", entireDish)
+  }
+
+  delete(dishId) {
+    console.log("Update Dish", dishId)
+  }
+
 }

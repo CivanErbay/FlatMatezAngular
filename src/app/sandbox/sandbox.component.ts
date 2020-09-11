@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
-import { DishesService } from '../shared/services/dishes.service'
+import { DishesService } from '../shared/services/dishes.service';
 
 @Component({
   selector: 'app-sandbox',
@@ -11,18 +11,16 @@ import { DishesService } from '../shared/services/dishes.service'
 export class SandboxComponent implements OnInit {
   constructor(public dialog: MatDialog, private dishesService: DishesService) {}
 
-  
   ngOnInit(): void {
     this.resetSelectedDish();
-    this.dishes = this.dishesService.dishes;
+    this.dishes = this.dishesService.all();
   }
-
 
   //VARIABLES
   themeColor = 'red';
   currentDish: any;
   dishes = null;
-
+  showFavMeals = false;
 
   //METHODS
   updateColor() {
@@ -54,10 +52,6 @@ export class SandboxComponent implements OnInit {
     });
   }
 
-  deleteDish(dishId: any) {
-    // this.ingredients.splice(dishId, 1)
-    this.dishes = this.dishes.filter((it) => it.id != dishId);
-  }
 
   resetSelectedDish() {
     const emptyDish = {
@@ -68,7 +62,7 @@ export class SandboxComponent implements OnInit {
       ingThree: '',
       duration: null,
       favourite: false,
-    }
+    };
 
     this.currentDish = emptyDish;
   }
@@ -86,13 +80,15 @@ export class SandboxComponent implements OnInit {
       ingThree: ingThree,
       duration: 10,
       favourite: false,
-    }
-
-    this.dishes.push(addDish)
-
+    };
+      this.dishesService.create(addDish);
   }
 
-  showFavMeals = false;
+  deleteDish(dishId) {
+    this.dishesService.delete(dishId)
+  }
+
+
 
   showFavs() {
     this.showFavMeals = !this.showFavMeals;
