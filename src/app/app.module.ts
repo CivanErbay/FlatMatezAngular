@@ -12,7 +12,7 @@ import { DialogExampleComponent } from './dialog-example/dialog-example.componen
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { FormsModule } from '@angular/forms';
 import { FavDishesComponent } from './fav-dishes/fav-dishes.component';
-
+import { DishesService } from './shared/services/dishes.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +35,9 @@ import { FavDishesComponent } from './fav-dishes/fav-dishes.component';
     MaterialModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    DishesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
+import { DishesService } from '../shared/services/dishes.service'
 
 @Component({
   selector: 'app-sandbox',
@@ -8,67 +9,19 @@ import { DialogExampleComponent } from '../dialog-example/dialog-example.compone
   styleUrls: ['./sandbox.component.scss'],
 })
 export class SandboxComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private dishesService: DishesService) {}
 
   
   ngOnInit(): void {
     this.resetSelectedDish();
+    this.dishes = this.dishesService.dishes;
   }
 
-
-
-  favDishes = [
-    {
-      id: 0,
-      dish: 'Pizza',
-      ingOne: 'Dough',
-      ingTwo: 'Cheese',
-      ingThree: 'Tomato',
-      duration: 15,
-      favourite: true,
-    },
-    {
-      id: 1,
-      dish: 'Falafel',
-      ingOne: 'Chickpeas',
-      ingTwo: 'Bread',
-      ingThree: 'Herbs',
-      duration: 4,
-      favourite: true,
-    },
-    {
-      id: 2,
-      dish: 'PadThai',
-      ingOne: 'Noodels',
-      ingTwo: 'Peanuts',
-      ingThree: 'Chicken',
-      duration: 10,
-      favourite: true,
-    },
-    {
-      id: 3,
-      dish: 'Döner',
-      ingOne: 'Bread',
-      ingTwo: 'Meet',
-      ingThree: 'Salad',
-      duration: 3,
-      favourite: false,
-    },
-    {
-      id: 4,
-      dish: 'Pasta',
-      ingOne: 'Noodels',
-      ingTwo: 'Oil',
-      ingThree: 'Tomato',
-      duration: 15,
-      favourite: false,
-    },
-  ];
 
   //VARIABLES
   themeColor = 'red';
   currentDish: any;
-
+  dishes = null;
 
 
   //METHODS
@@ -103,7 +56,7 @@ export class SandboxComponent implements OnInit {
 
   deleteDish(dishId: any) {
     // this.ingredients.splice(dishId, 1)
-    this.favDishes = this.favDishes.filter((it) => it.id != dishId);
+    this.dishes = this.dishes.filter((it) => it.id != dishId);
   }
 
   resetSelectedDish() {
@@ -126,7 +79,7 @@ export class SandboxComponent implements OnInit {
 
   saveDish(title, ingOne, ingTwo, ingThree) {
     const addDish = {
-      id: this.favDishes.length,
+      id: this.dishes.length,
       dish: title,
       ingOne: ingOne,
       ingTwo: ingTwo,
@@ -135,7 +88,7 @@ export class SandboxComponent implements OnInit {
       favourite: false,
     }
 
-    this.favDishes.push(addDish)
+    this.dishes.push(addDish)
 
   }
 
