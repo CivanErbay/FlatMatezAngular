@@ -50,6 +50,7 @@
               </div>
             </mat-list-item>
           </div>
+          <mat-slide-toggle (click)="showFavs()"><span style="font-weight:bold">Show Favourite Meals</span></mat-slide-toggle> 
         </mat-card>
       </div>
     </mat-grid-tile>
@@ -60,8 +61,8 @@
 
         <!-- Angular is creating a form-controller under the hood, as soon as you use angular-forms. e.g. (submit)-Function or form.valid/form.invalid
           to handle "disabled" -->
-
-          <app-fav-dishes [allDishes]="favDishes"></app-fav-dishes>
+          
+          <app-fav-dishes *ngIf="showFavMeals" [allDishes]="favDishes"></app-fav-dishes>
 
         <form
           #form="ngForm"
@@ -128,12 +129,7 @@
             <button [disabled]="form.invalid" type="submit" mat-button color="primary">Submit</button>
           </mat-card>
         </form>
-   
-
-        <!-- <button (click)="showFavs()"></button> -->
-
-     
-       
+  
       </div>
     </mat-grid-tile>
   </mat-grid-list>

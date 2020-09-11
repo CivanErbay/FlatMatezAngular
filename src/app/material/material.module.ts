@@ -11,6 +11,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
+
 const MaterialComponents = [
   MatInputModule,
   MatSlideToggleModule,

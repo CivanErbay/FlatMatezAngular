@@ -139,7 +139,9 @@ export class SandboxComponent implements OnInit {
 
   }
 
+  showFavMeals = false;
+
   showFavs() {
-    
+    this.showFavMeals = !this.showFavMeals;
   }
 }
