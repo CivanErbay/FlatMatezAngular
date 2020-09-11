@@ -10,3 +10,9 @@ h1 {
     text-align: center;
     padding: 1.5em;
 }
+
+/* affects all children of parent__div class
+ */
+ .parent__div > * {
+   margin: 0 30px;
+}

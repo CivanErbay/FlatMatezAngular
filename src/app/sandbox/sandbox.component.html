@@ -1,136 +1,151 @@
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <div>
+      <h1>Control Section</h1>
 
+      <mat-card>
+        <!-- This Card is a code Example for 2 Way Binding (property Binding) -->
+        <mat-form-field class="example-full-width">
+          <mat-label>Gimme sum colorz</mat-label>
+          <input
+            name="themeColor"
+            matInput
+            [(ngModel)]="themeColor"
+            type="text"
+          />
+        </mat-form-field>
 
-  <mat-grid-list cols="2" >
-    <mat-grid-tile >
-      <div>
-        <h1>Control Section</h1>
+        <!-- This is event Binding -->
+        <button mat-button (click)="updateColor()">Click</button>
 
-        <mat-card>
-          <!-- This Card is a code Example for 2 Way Binding (property Binding) -->
-          <mat-form-field class="example-full-width">
-            <mat-label>Gimme sum colorz</mat-label>
-            <input
-              name="themeColor"
-              matInput
-              [(ngModel)]="themeColor"
-              type="text"
-            />
-          </mat-form-field>
+        <!--Important: You can use all kind of DOM-Events and Trigger-->
+        <button mat-button (mouseenter)="updateColor2()">Hover</button>
 
-          <!-- This is event Binding -->
-          <button mat-button (click)="updateColor()">Click</button>
-
-          <!--Important: You can use all kind of DOM-Events and Trigger-->
-          <button mat-button (mouseenter)="updateColor2()">Hover</button>
-
-          <!-- *ngFor example Best Practice-->
-          <div>
-            <mat-list-item
-              style="cursor: pointer"
-              role="listitem"
-              *ngFor="let dish of favDishes"
-              (click)="selectAndVoteDish(dish)"
-            >
-              <div style="display: flex; justify-content: space-between">
-                <h3 [style.color]="themeColor" style="font-weight: bold">
-                  {{ dish.dish }}
-                </h3>
-                <!-- In every Event you can Put More than one function(!!) and ALSO with every EventHandler there is an 
+        <!-- *ngFor example Best Practice-->
+        <div>
+          <mat-list-item
+            style="cursor: pointer"
+            role="listitem"
+            *ngFor="let dish of favDishes"
+            (click)="selectAndVoteDish(dish)"
+          >
+            <div style="display: flex; justify-content: space-between">
+              <h3 [style.color]="themeColor" style="font-weight: bold">
+                {{ dish.dish }}
+              </h3>
+              <!-- In every Event you can Put More than one function(!!) and ALSO with every EventHandler there is an 
        Event-Property which we have to with the $ sign -->
-                <button
-                  mat-icon-button
-                  color="warn"
-                  (click)="
-                    deleteDish(currentDish.id);
-                    $event.stopImmediatePropagation()
-                  "
-                >
-                  <mat-icon>delete_sweep</mat-icon>
-                </button>
-              </div>
-            </mat-list-item>
-          </div>
-          <mat-slide-toggle (click)="showFavs()"><span style="font-weight:bold">Show Favourite Meals</span></mat-slide-toggle> 
-        </mat-card>
-      </div>
-    </mat-grid-tile>
-
-    <mat-grid-tile>
-      <div>
-        <h1>Output Section</h1>
-
-        <!-- Angular is creating a form-controller under the hood, as soon as you use angular-forms. e.g. (submit)-Function or form.valid/form.invalid
-          to handle "disabled" -->
-          
-          <app-fav-dishes *ngIf="showFavMeals" [allDishes]="favDishes"></app-fav-dishes>
-
-        <form
-          #form="ngForm"
-          (submit)="
-            saveDish(
-              currentDish.dish,
-              currentDish.ingOne,
-              currentDish.ingTwo,
-              currentDish.ingThree
-            )
-          "
-        >
-          <mat-card style="max-width: 40vw" class="center">
-            <div style="margin-top: 3em">
-              <app-ingredients [selectedDish]="currentDish"></app-ingredients>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="
+                  deleteDish(currentDish.id); $event.stopImmediatePropagation()
+                "
+              >
+                <mat-icon>delete_sweep</mat-icon>
+              </button>
             </div>
+          </mat-list-item>
+        </div>
+        <mat-slide-toggle (click)="showFavs()"
+          ><span style="font-weight: bold"
+            >Show Favourite Meals</span
+          ></mat-slide-toggle
+        >
+      </mat-card>
+    </div>
+  </mat-grid-tile>
 
-            <!--             REQUIRED property gives back true/false on the value of "{{form.valid}}" which we can work with 
+  <mat-grid-tile>
+    <div>
+      <h1>Output Section</h1>
+
+      <!-- Angular is creating a form-controller under the hood, as soon as you use angular-forms. e.g. (submit)-Function or form.valid/form.invalid
+          to handle "disabled" -->
+      <div class="parent__div" style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <app-fav-dishes
+            *ngIf="showFavMeals"
+            [allDishes]="favDishes"
+          ></app-fav-dishes>
+        </div>
+        <div>
+          <form
+            #form="ngForm"
+            (submit)="
+              saveDish(
+                currentDish.dish,
+                currentDish.ingOne,
+                currentDish.ingTwo,
+                currentDish.ingThree
+              )
+            "
+          >
+            <mat-card style="max-width: 40vw" class="center">
+              <div style="margin-top: 3em">
+                <app-ingredients [selectedDish]="currentDish"></app-ingredients>
+              </div>
+
+              <!--             REQUIRED property gives back true/false on the value of "{{form.valid}}" which we can work with 
  -->
-            <mat-form-field>
-              <input
-                *ngIf="currentDish"
-                matInput
-                placeholder="title"
-                type="text"
-                name="title"
-                required
-                [(ngModel)]="currentDish.dish"
-              />
-            </mat-form-field>
-            <mat-form-field>
-              <input
-                *ngIf="currentDish"
-                matInput
-                placeholder="Erste Zutat"
-                type="text"
-                name="description"
-                required
-                [(ngModel)]="currentDish.ingOne"
-              />
-            </mat-form-field>
-            <mat-form-field>
-              <input
-                *ngIf="currentDish"
-                matInput
-                placeholder="Erste Zutat"
-                type="text"
-                name="description"
-                required
-                [(ngModel)]="currentDish.ingTwo"
-              />
-            </mat-form-field>
-            <mat-form-field>
-              <input
-                *ngIf="currentDish"
-                matInput
-                placeholder="Erste Zutat"
-                type="text"
-                name="id"
-                [(ngModel)]="currentDish.ingThree"
-              />
-            </mat-form-field>
-            <button type="button" mat-button (click)="cancel()">Cancel</button>
-            <button [disabled]="form.invalid" type="submit" mat-button color="primary">Submit</button>
-          </mat-card>
-        </form>
-  
+              <mat-form-field>
+                <input
+                  *ngIf="currentDish"
+                  matInput
+                  placeholder="title"
+                  type="text"
+                  name="title"
+                  required
+                  [(ngModel)]="currentDish.dish"
+                />
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  *ngIf="currentDish"
+                  matInput
+                  placeholder="Erste Zutat"
+                  type="text"
+                  name="description"
+                  required
+                  [(ngModel)]="currentDish.ingOne"
+                />
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  *ngIf="currentDish"
+                  matInput
+                  placeholder="Erste Zutat"
+                  type="text"
+                  name="description"
+                  required
+                  [(ngModel)]="currentDish.ingTwo"
+                />
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  *ngIf="currentDish"
+                  matInput
+                  placeholder="Erste Zutat"
+                  type="text"
+                  name="id"
+                  [(ngModel)]="currentDish.ingThree"
+                />
+              </mat-form-field>
+              <button type="button" mat-button (click)="cancel()">
+                Cancel
+              </button>
+              <button
+                [disabled]="form.invalid"
+                type="submit"
+                mat-button
+                color="primary"
+              >
+                Submit
+              </button>
+            </mat-card>
+          </form>
+        </div>
       </div>
-    </mat-grid-tile>
-  </mat-grid-list>
-
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
